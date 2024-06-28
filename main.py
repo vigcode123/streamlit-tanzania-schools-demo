@@ -65,5 +65,4 @@ def app():
     # add plotly chart to streamlit
     st.plotly_chart(fig)
 
-if __name__ == "main":   
-    app()
+app()
