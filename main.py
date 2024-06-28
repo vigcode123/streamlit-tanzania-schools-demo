@@ -39,11 +39,11 @@ def app():
     if region: # conditions gets valid when variable is initialized 
         region_data = status.loc[status['WARD'] == region]
         print(region_data.head())
-        fig = px.scatter_mapbox(region_data, lat = "LATITUDE", lon = "LONGITUDE", hover_data = ["WARD", "REGION", "COUNCIL", "OWNERSHIP"],
+        fig = px.scatter_mapbox(region_data, lat = "LATITUDE", lon = "LONGITUDE", hover_name="SCHOOL_NAM", hover_data = ["WARD", "REGION", "COUNCIL", "OWNERSHIP"],
                                 color_discrete_sequence = ["fuchsia"], zoom = 10, height = 700, size = region_data["TOTAL_POPULATION"])
         
     else: # when no ward is selected, map of Tanzania and schools are presented
-        fig = px.scatter_mapbox(status, lat = "LATITUDE", lon = "LONGITUDE", hover_data = ["WARD", "REGION", "COUNCIL", "OWNERSHIP"],
+        fig = px.scatter_mapbox(status, lat = "LATITUDE", lon = "LONGITUDE", hover_name="SCHOOL_NAM", hover_data = ["WARD", "REGION", "COUNCIL", "OWNERSHIP"],
                                 color_discrete_sequence = ["blue"], zoom = 5, height = 700, size = status["TOTAL_POPULATION"])
 
     
@@ -64,5 +64,5 @@ def app():
 
     # add plotly chart to streamlit
     st.plotly_chart(fig)
-
+  
 app()
